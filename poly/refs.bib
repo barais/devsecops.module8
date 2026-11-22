@@ -1,0 +1,195 @@
+% ============================================================
+% Bibliographie — Cours 8 : Reproducible Builds
+% Université de Rennes · IRISA / DiverSE
+% Références vérifiées
+% ============================================================
+
+% ---- Définition et mission ----
+
+@online{rb_definition,
+  author  = {{Reproducible Builds Community}},
+  title   = {Definition of Reproducible Builds},
+  year    = {2024},
+  url     = {https://reproducible-builds.org/docs/definition/},
+  note    = {Référence officielle de la communauté Reproducible Builds},
+}
+
+@online{rb_resources,
+  author  = {{Reproducible Builds Community}},
+  title   = {Reproducible Builds — Resources and Publications},
+  year    = {2024},
+  url     = {https://reproducible-builds.org/resources/},
+  note    = {Publications, talks et ressources de la communauté},
+}
+
+% ---- Outils ----
+
+@online{source_date_epoch,
+  author  = {{Reproducible Builds Community}},
+  title   = {{SOURCE_DATE_EPOCH}: Specification for Reproducible Build Timestamps},
+  year    = {2017},
+  url     = {https://reproducible-builds.org/docs/source-date-epoch/},
+  note    = {Specification version 2017, supportée par de nombreux outils (gcc, sphinx, go, rust...)},
+}
+
+@online{diffoscope,
+  author  = {{Reproducible Builds Community}},
+  title   = {diffoscope: in-depth comparison of files, archives, and directories},
+  year    = {2024},
+  url     = {https://diffoscope.org/},
+  note    = {Outil de comparaison profonde pour le débogage de non-reproductibilites},
+}
+
+@online{disorderfs,
+  author  = {{Debian Reproducible Builds Team}},
+  title   = {disorderfs: FUSE filesystem that randomizes directory ordering},
+  year    = {2023},
+  url     = {https://salsa.debian.org/reproducible-builds/disorderfs},
+  note    = {Utilisé dans le "torture test" de Debian},
+}
+
+% ---- Historique ----
+
+@online{bitcoin_reproducible,
+  author  = {{Bitcoin Core developers}},
+  title   = {Bitcoin Core — Reproducible Builds (Gitian)},
+  year    = {2011},
+  url     = {https://github.com/bitcoin-core/docs/blob/master/gitian-building.md},
+  note    = {Bitcoin Core a rendu ses builds reproductibles en 2011},
+}
+
+@online{torbrowser_reproducible,
+  author  = {Perry, Mike},
+  title   = {Deterministic Builds Part Two: Reflections on Trusting Trust and Distrusting Yourself},
+  year    = {2013},
+  url     = {https://blog.torproject.org/deterministic-builds-part-two-reflections-trusting-trust-and-distrusting-yourself/},
+  note    = {Blog Tor Project, 2013 — rendre Firefox (Tor Browser) reproductible},
+}
+
+@online{lunar_fosdem2015,
+  author  = {Reyes, Lunar and Levsen, Holger},
+  title   = {Reproducible Builds: Moving Beyond Single Points of Failure for Software Distribution},
+  year    = {2015},
+  url     = {https://reproducible-builds.org/resources/presentations/2015-02-01-FOSDEM/},
+  note    = {Talk FOSDEM 2015 invitant la communaute du logiciel libre a collaborer},
+}
+
+@online{lunar_ccccamp2015,
+  author  = {Reyes, Lunar},
+  title   = {How to make your software build reproducibly},
+  year    = {2015},
+  url     = {https://reproducible-builds.org/resources/presentations/2015-08-14-CCCamp/},
+  note    = {Talk CCCamp 2015 — problemes courants et solutions},
+}
+
+@online{mikeperry_ccc2014,
+  author  = {Perry, Mike and Schoen, Seth and Reyes, Lunar},
+  title   = {Reproducible Builds},
+  year    = {2014},
+  url     = {https://reproducible-builds.org/resources/presentations/2014-12-30-CCCongress/},
+  note    = {Presentation au 31C3 (CCCongress 2014), decembre 2014},
+}
+
+@online{wireguard2023,
+  author  = {{WireGuard Android Team}},
+  title   = {WireGuard Android — Reproducible Builds announcement},
+  year    = {2023},
+  url     = {https://lists.zx2c4.com/pipermail/wireguard/2023-April/008045.html},
+  note    = {Mailing list wireguard, avril 2023 — builds identiques sur site, Play Store et F-Droid},
+}
+
+% ---- Politique et gouvernance ----
+
+@online{whitehouse_sbom2021,
+  author  = {{White House}},
+  title   = {Executive Order on Improving the Nation's Cybersecurity},
+  year    = {2021},
+  url     = {https://www.whitehouse.gov/briefing-room/statements-releases/2021/06/08/fact-sheet-president-signs-executive-order-chartering-national-security-telecommunications-advisory-committee/},
+  note    = {Exige des SBOM pour les logiciels gouvernementaux americains},
+}
+
+@online{debian_policy_rb,
+  author  = {{Debian Policy Maintainers}},
+  title   = {Debian Policy Manual — Package reproducibility},
+  year    = {2024},
+  url     = {https://www.debian.org/doc/debian-policy/ch-source.html#reproducibility},
+  note    = {Depuis 2017 les paquets Debian devraient etre reproductibles},
+}
+
+@online{rebuilder_snapshot,
+  author  = {Lynxis and Josch and {Debian Reproducible Builds Team}},
+  title   = {rebuilder-snapshot.debian.net — Cache for snapshot.debian.org},
+  year    = {2024},
+  url     = {https://rebuilder-snapshot.debian.net/},
+  note    = {Cache optimise de snapshot.d.o, stockant uniquement les build-depends},
+}
+
+% ---- Paquets non-reproductibles / ressources ----
+
+@online{theunreproduciblepackage,
+  author  = {Wiedemann, Bernhard},
+  title   = {The Unreproducible Package},
+  year    = {2023},
+  url     = {https://github.com/bmwiedemann/theunreproduciblepackage},
+  note    = {Exemples concrets de causes de non-reproductibilite dans les packages},
+}
+
+@online{rb_docs,
+  author  = {{Reproducible Builds Community}},
+  title   = {Reproducible Builds — Documentation},
+  year    = {2024},
+  url     = {https://reproducible-builds.org/docs/},
+  note    = {Documentation officielle : 422 types de problemes connus documentes},
+}
+
+% ---- Securite de la supply chain ----
+
+@techreport{enisa2021supply,
+  author      = {{ENISA}},
+  title       = {Threat Landscape for Supply Chain Attacks},
+  institution = {European Union Agency for Cybersecurity (ENISA)},
+  year        = {2021},
+  url         = {https://www.enisa.europa.eu/publications/threat-landscape-for-supply-chain-attacks},
+}
+
+@techreport{slsa2023,
+  author      = {{OpenSSF and Google}},
+  title       = {Supply chain Levels for Software Artifacts (SLSA) v1.0},
+  institution = {OpenSSF},
+  year        = {2023},
+  url         = {https://slsa.dev/spec/v1.0/},
+}
+
+@online{xzutils2024,
+  author  = {Freund, Andres},
+  title   = {backdoor in upstream xz/liblzma leading to SSH server compromise (CVE-2024-3094)},
+  year    = {2024},
+  url     = {https://www.openwall.com/lists/oss-security/2024/03/29/4},
+  note    = {Openwall OSS-Security mailing list, 29 mars 2024},
+}
+
+@online{solarwinds2021,
+  author  = {{Mandiant (FireEye)}},
+  title   = {Highly Evasive Attacker Leverages SolarWinds Supply Chain to Compromise Multiple Global Victims With SUNBURST Backdoor},
+  year    = {2020},
+  url     = {https://www.mandiant.com/resources/blog/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor},
+  note    = {Publication Mandiant, decembre 2020},
+}
+
+% ---- Builds et outils ----
+
+@online{debrebuild,
+  author  = {{Debian}},
+  title   = {debrebuild -- attempt to rebuild a Debian package},
+  year    = {2023},
+  url     = {https://manpages.debian.org/bullseye/devscripts/debrebuild.1.en.html},
+  note    = {Outil Debian pour reconstruire un paquet depuis son .buildinfo},
+}
+
+@online{rb_summit_history,
+  author  = {{Reproducible Builds Community}},
+  title   = {Reproducible Builds Summits},
+  year    = {2024},
+  url     = {https://reproducible-builds.org/events/},
+  note    = {Summits : Athenes (2015), Berlin (2016), Paris (2017), Marrakech (2019), Venise (2021), Hambourg (2022/2023)},
+}
