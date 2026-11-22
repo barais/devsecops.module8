@@ -1,6 +1,7 @@
 ---
 theme: seriph
 title: "Cours 8 — Reproducible Builds"
+background: https://cover.sli.dev
 titleTemplate: "%s"
 author: Olivier Barais
 class: text-center
@@ -722,6 +723,147 @@ layout: section
 **Les builds reproductibles ne sont pas une fin en soi, mais un maillon essentiel**  
 **d'une chaîne d'approvisionnement logicielle sécurisée.**
 
+</div>
+
+</v-click>
+
+---
+layout: section
+---
+
+# Partie pratique
+## Pourquoi un build n'est-il pas reproductible ?
+
+---
+
+# Objectifs & prérequis
+
+**But :** compiler le *même* code deux fois et constater que le résultat n'est **pas** identique bit à bit.
+
+<v-clicks>
+
+- Même code source → deux compiles → le hash est-il le même ? (souvent non !)
+- Pour chaque cause : l'observer → appliquer le remède → revérifier que tout redevient identique
+- Prérequis : `gcc`, `python3`, `diffoscope` (`sudo apt install diffoscope`)
+
+</v-clicks>
+
+---
+
+# Démo 1 — Les timestamps dans le binaire
+
+Le préprocesseur `gcc` capture l'instant de compilation dans le binaire.
+
+```c
+#include <stdio.h>
+int main(){ printf("compile le %s a %s\n", __DATE__, __TIME__); return 0; }
+```
+
+```bash
+gcc hello.c -o h1 ; sleep 1 ; gcc hello.c -o h2     # 2 compiles à 1 s d'écart
+sha256sum h1 h2                                     # ⚠ deux hash DIFFÉRENTS
+diffoscope h1 h2                                    # ...et on voit pourquoi !
+```
+
+<v-click>
+
+> Le binaire "correct" n'existe pas : il change à chaque seconde écoulée.
+
+</v-click>
+
+---
+
+# Démo 1 — Le remède : SOURCE_DATE_EPOCH
+
+Fixer une fois pour toutes la "date des sources" (dernier commit, par exemple) :
+
+```bash
+export SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)
+gcc hello.c -o h3 ; sleep 1 ; gcc hello.c -o h4
+sha256sum h3 h4                                     # ✅ deux hash IDENTIQUES
+```
+
+<v-click>
+
+- `gcc` fait correspondre `__DATE__`, `__TIME__` et `__TIMESTAMP__` à `SOURCE_DATE_EPOCH`
+- Recompiler à n'importe quel moment → même date embarquée → mêmes binaires
+
+</v-click>
+
+---
+
+# Démo 2 — Le chemin de build dans le binaire
+
+Le chemin absolu de compilation fuite dans le binaire (via `__FILE__`, infos de debug…).
+
+```bash
+mkdir -p A B ; cp hello.c A/ ; cp hello.c B/
+(cd A && gcc -g hello.c -o bin) ; (cd B && gcc -g hello.c -o bin)
+strings A/bin | grep hello.c                         # le chemin absolu apparaît
+sha256sum A/bin B/bin                                # ⚠ deux hash DIFFÉRENTS
+```
+
+<v-click>
+
+> Deux machines différentes (chemins différents) → mêmes sources → binaires différents.
+
+</v-click>
+
+---
+
+# Démo 2 — Le remède : -ffile-prefix-map
+
+Normaliser vers un chemin canonique identique pour toute la chaîne :
+
+```bash
+(cd A && gcc -g -ffile-prefix-map=/chemin/A=/build/src hello.c -o bin)
+(cd B && gcc -g -ffile-prefix-map=/chemin/B=/build/src hello.c -o bin)
+sha256sum A/bin B/bin                                # ✅ deux hash IDENTIQUES
+```
+
+<v-click>
+
+- `-ffile-prefix-map` / `-fdebug-prefix-map` / `-fmacro-prefix-map` effacent le préfixe propre à l'hôte
+- En pratique : on build toujours depuis un répertoire canonique (ex. `/build`)
+
+</v-click>
+
+---
+
+# Démo 3 — L'ordre de parcours des tables de hachage
+
+Parcourir un dictionnaire / un ensemble n'a **aucun ordre garanti**.
+
+```bash
+for s in 1 2 3; do PYTHONHASHSEED=$s python3 \
+  -c 'print(list({"delta-kernel","beta-xorg","alpha-libs"}))'; done
+# delta-kernel beta-xorg alpha-libs
+# beta-xorg alpha-libs delta-kernel ...
+```
+
+<v-click>
+
+- Une archive produite en parcourant dans cet ordre sera **différente** selon la graine
+- ➡ Toujours **trier** les entrées avant d'écrire une archive, une base, un fichier
+
+</v-click>
+
+---
+
+# Bilan — Causes et remèdes
+
+| Cause de non-reproductibilité | Remède |
+|---|---|
+| Timestamps (`__DATE__`, mtimes) | `SOURCE_DATE_EPOCH` |
+| Chemin de build dans le binaire | `-ffile-prefix-map` |
+| Ordre des hash / bases de données | trier avant d'écrire |
+| uid / gid / umask | `fakeroot`, permissions normalisées |
+| Hostname / locale / fuseau | environnement maîtrisé (CI) |
+
+<v-click>
+
+<div class="p-3 bg-blue-900 text-white rounded text-center font-bold">
+Compilez 2× le même code → si un hash diffère, lancez `diffoscope` pour trouver la cause !
 </div>
 
 </v-click>
