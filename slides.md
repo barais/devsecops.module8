@@ -879,10 +879,16 @@ class: text-center
 
 # Merci !
 
-<div class="mt-8">
-  <img src="/logo.svg" style="height:80px; margin:auto;">
+<div class="mt-8 max-w-2xl mx-auto text-left">
+
+**Ressources :**
+
+- 📄 **Poly du cours** : [télécharger le poly (PDF)](https://raw.githubusercontent.com/barais/devsecops.module8/refs/heads/master/poly/poly.pdf)
+* [Reproducible Builds](https://reproducible-builds.org)
+- ➡️ **Cours suivant — Cours 9 — Introduction à GNU Guix** : [https://olivier.barais.fr/devsecops.module9](https://olivier.barais.fr/devsecops.module9)
+
 </div>
 
-<div class="mt-6 text-sm opacity-70">
-https://reproducible-builds.org
+<div class="mt-8 text-sm opacity-50">
+Olivier Barais · Module DevSecOps
 </div>
