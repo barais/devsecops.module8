@@ -11,6 +11,10 @@ drawings:
   persist: false
 transition: slide-left
 mdc: true
+pdf: true
+export: true
+comark: true
+download: true
 ---
 
 # Cours 8 — Reproducible Builds
