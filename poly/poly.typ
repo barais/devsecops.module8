@@ -445,7 +445,7 @@ Si le build produit un résultat identique malgré le désordre du système de f
 
 == Les origines (avant 2013)
 
-L'idée des builds reproductibles est ancienne. Une première mention apparaît sur la liste `debian-devel@lists.debian.org` en 2000, puis une discussion plus substantielle en 2007 — jugée irréalisable par de nombreux participants à l'époque. John Gilmore a révélé en 2017 que GCC était en fait reproductible sur plusieurs architectures au début des années 1990, preuve que l'idée avait été explorée très tôt.
+L'idée des builds reproductibles est ancienne. Une première mention apparaît sur la liste `debian-devel@lists.debian.org` en 2000, puis une discussion plus substantielle en 2007 — jugée irréalisable par de nombreux participants à l'époque.
 
 == Les catalyseurs (2011–2013)
 

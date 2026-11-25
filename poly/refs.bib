@@ -54,23 +54,23 @@
   author  = {{Bitcoin Core developers}},
   title   = {Bitcoin Core — Reproducible Builds (Gitian)},
   year    = {2011},
-  url     = {https://github.com/bitcoin-core/docs/blob/master/gitian-building.md},
+  url     = {https://github.com/bitcoin-core/docs/blob/f64a55f/gitian-building.md},
   note    = {Bitcoin Core a rendu ses builds reproductibles en 2011},
 }
 
 @online{torbrowser_reproducible,
   author  = {Perry, Mike},
-  title   = {Deterministic Builds Part Two: Reflections on Trusting Trust and Distrusting Yourself},
+  title   = {Deterministic Builds Part Two: Technical Details},
   year    = {2013},
-  url     = {https://blog.torproject.org/deterministic-builds-part-two-reflections-trusting-trust-and-distrusting-yourself/},
+  url     = {https://blog.torproject.org/deterministic-builds-part-two-technical-details/},
   note    = {Blog Tor Project, 2013 — rendre Firefox (Tor Browser) reproductible},
 }
 
 @online{lunar_fosdem2015,
   author  = {Reyes, Lunar and Levsen, Holger},
-  title   = {Reproducible Builds: Moving Beyond Single Points of Failure for Software Distribution},
+  title   = {Stretching out for trustworthy reproducible builds},
   year    = {2015},
-  url     = {https://reproducible-builds.org/resources/presentations/2015-02-01-FOSDEM/},
+  url     = {https://archive.fosdem.org/2015/schedule/event/stretching_out_for_trustworthy_reproducible_builds},
   note    = {Talk FOSDEM 2015 invitant la communaute du logiciel libre a collaborer},
 }
 
@@ -78,7 +78,7 @@
   author  = {Reyes, Lunar},
   title   = {How to make your software build reproducibly},
   year    = {2015},
-  url     = {https://reproducible-builds.org/resources/presentations/2015-08-14-CCCamp/},
+  url     = {https://media.ccc.de/v/camp2015-6657-how_to_make_your_software_build_reproducibly},
   note    = {Talk CCCamp 2015 — problemes courants et solutions},
 }
 
@@ -86,7 +86,7 @@
   author  = {Perry, Mike and Schoen, Seth and Reyes, Lunar},
   title   = {Reproducible Builds},
   year    = {2014},
-  url     = {https://reproducible-builds.org/resources/presentations/2014-12-30-CCCongress/},
+  url     = {https://media.ccc.de/v/31c3_-_6240_-_en_-_saal_g_-_201412271400_-_reproducible_builds_-_mike_perry_-_seth_schoen_-_hans_steiner},
   note    = {Presentation au 31C3 (CCCongress 2014), decembre 2014},
 }
 
@@ -101,11 +101,11 @@
 % ---- Politique et gouvernance ----
 
 @online{whitehouse_sbom2021,
-  author  = {{White House}},
-  title   = {Executive Order on Improving the Nation's Cybersecurity},
-  year    = {2021},
-  url     = {https://www.whitehouse.gov/briefing-room/statements-releases/2021/06/08/fact-sheet-president-signs-executive-order-chartering-national-security-telecommunications-advisory-committee/},
-  note    = {Exige des SBOM pour les logiciels gouvernementaux americains},
+  author  = {{NIST}},
+  title   = {Software Security in Supply Chains: Software Bill of Materials (SBOM) — guidance under Executive Order 14028},
+  year    = {2022},
+  url     = {https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity/software-security-supply-chains-software-1},
+  note    = {Guidance SBOM découlant de l'EO 14028 (exigence de SBOM pour le logiciel gouvernemental)},
 }
 
 @online{debian_policy_rb,
@@ -117,10 +117,10 @@
 }
 
 @online{rebuilder_snapshot,
-  author  = {Lynxis and Josch and {Debian Reproducible Builds Team}},
-  title   = {rebuilder-snapshot.debian.net — Cache for snapshot.debian.org},
-  year    = {2024},
-  url     = {https://rebuilder-snapshot.debian.net/},
+  author  = {{Reproducible Builds Team}},
+  title   = {Reproducible Builds — November 2023 report (snapshot.debian.org caching for rebuilders)},
+  year    = {2023},
+  url     = {https://reproducible-builds.org/reports/2023-11/},
   note    = {Cache optimise de snapshot.d.o, stockant uniquement les build-depends},
 }
 
@@ -177,14 +177,6 @@
 }
 
 % ---- Builds et outils ----
-
-@online{debrebuild,
-  author  = {{Debian}},
-  title   = {debrebuild -- attempt to rebuild a Debian package},
-  year    = {2023},
-  url     = {https://manpages.debian.org/bullseye/devscripts/debrebuild.1.en.html},
-  note    = {Outil Debian pour reconstruire un paquet depuis son .buildinfo},
-}
 
 @online{rb_summit_history,
   author  = {{Reproducible Builds Community}},
